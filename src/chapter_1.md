@@ -1,46 +1,4 @@
-<script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
-<script>
-function setup(pyodide) {
-  var setup_code = `
-import sys, io, traceback
-def run_code(code):
-    out = io.StringIO()
-    oldout = sys.stdout
-    olderr = sys.stderr
-    sys.stdout = sys.stderr = out
-    try:
-        exec(code, {})
-    except:
-        traceback.print_exc()
-    
-    sys.stdout = oldout
-    sys.stderr = olderr
-    return out.getvalue()
-`
-  pyodide.runPython(setup_code)
-}
-
-async function main() {
-  let pyodide = await loadPyodide({
-    indexURL: "https://cdn.jsdelivr.net/pyodide/v0.18.1/full/",
-  });
-  setup(pyodide);
-  return pyodide;
-}
-let pyodideReadyPromise = main();
-
-async function evaluatePython(i) {
-  let pyodide = await pyodideReadyPromise;
-  try {
-    let editor = document.getElementsByClassName("ace_editor")[i].env.editor;
-    pyodide.globals.code_to_run = editor.getValue();
-    let output = pyodide.runPython('run_code(code_to_run)');
-    document.getElementsByClassName("output-python")[i].value = output;
-  } catch (err) {
-    document.getElementsByClassName("output-python")[i].value = err;
-  }
-}
-</script>
+{{#include header.md}}
 
 # Python laskimena
 
@@ -88,15 +46,13 @@ print(1200 * (1 + 3 / 100) ** 5)
 ## Muuttujan määritteleminen
 
 Koodi suoritetaan rivi kerrallaan ellei jokin komento vaikuta järjestykseen.
-Aiempia tuloksia voi käyttää uudelleen määrittelemällä muuttujan.
-Muuttujan nimi voi olla esimerkiksi `x` ja arvo `0.3`, joka kirjoitetaan
-muodossa `x = 0.3`.  Seuraavilla riveillä `x` viittaa arvoon `0.3`.
-
-### Tehtävä: 
+Aiempia tuloksia käytetään uudelleen määrittelemällä muuttuja.  Muuttujan nimi
+voi olla esimerkiksi `x` ja arvo `0.3`, joka kirjoitetaan muodossa `x = 0.3`.
+Seuraavilla riveillä `x` viittaa arvoon `0.3`.
 
 ```python,editable
 x = 0.3
-print(3 * x - 0.9)
+print(3 * x)
 ```
 
 <button onclick="evaluatePython(2)">Suorita</button>
