@@ -1,0 +1,13 @@
+[book]
+authors = ["Tom Gustafsson"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Koodauksen perusteet"
+
+[output.html.playground]
+editable = true
+line-numbers = true
+
+[output.html]
+mathjax-support = true
