@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Python laskimena - Koodauksen perusteet</title>
+        <title>Lista - Koodauksen perusteet</title>
                 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html" class="active"><strong aria-hidden="true">1.</strong> Python laskimena</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="laskin.html"><strong aria-hidden="true">1.</strong> Python laskimena</a></li><li class="chapter-item expanded "><a href="ehtolause.html"><strong aria-hidden="true">2.</strong> Ehtolause</a></li><li class="chapter-item expanded "><a href="silmukka.html"><strong aria-hidden="true">3.</strong> Silmukka</a></li><li class="chapter-item expanded "><a href="lista.html" class="active"><strong aria-hidden="true">4.</strong> Lista</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -145,105 +145,15 @@
 
                 <div id="content" class="content">
                     <main>
-                        <script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
-<script>
-function setup(pyodide) {
-  var setup_code = `
-import sys, io, traceback
-def run_code(code):
-    out = io.StringIO()
-    oldout = sys.stdout
-    olderr = sys.stderr
-    sys.stdout = sys.stderr = out
-    try:
-        exec(code, {})
-    except:
-        traceback.print_exc()
-    
-    sys.stdout = oldout
-    sys.stderr = olderr
-    return out.getvalue()
-`
-  pyodide.runPython(setup_code)
-}
-
-async function main() {
-  let pyodide = await loadPyodide({
-    indexURL: "https://cdn.jsdelivr.net/pyodide/v0.18.1/full/",
-  });
-  setup(pyodide);
-  return pyodide;
-}
-let pyodideReadyPromise = main();
-
-async function evaluatePython(i) {
-  let pyodide = await pyodideReadyPromise;
-  try {
-    let editor = document.getElementsByClassName("ace_editor")[i].env.editor;
-    pyodide.globals.code_to_run = editor.getValue();
-    let output = pyodide.runPython('run_code(code_to_run)');
-    document.getElementsByClassName("output-python")[i].value = output;
-  } catch (err) {
-    document.getElementsByClassName("output-python")[i].value = err;
-  }
-}
-</script>
-<h1 id="python-laskimena"><a class="header" href="#python-laskimena">Python laskimena</a></h1>
-<h2 id="laskutoimituksia"><a class="header" href="#laskutoimituksia">Laskutoimituksia</a></h2>
-<p>Python on monipuolinen ohjelmointikieli.  Lisäksi se on kätevä laskin.
-Hyödyllisiä peruslaskutoimituksia ovat</p>
-<ul>
-<li>yhteenlasku <code>+</code></li>
-<li>vähennyslasku <code>-</code></li>
-<li>kertolasku <code>*</code></li>
-<li>jakolasku <code>/</code></li>
-<li>potenssi <code>**</code></li>
-<li>jakojäännös <code>%</code></li>
-</ul>
-<p>Laskujärjestys on tuttu matematiikasta ja sitä voi muuttaa sulkeilla.
-Vastaus saadaan tekstinä ruudulle komennon <code>print()</code> avulla:</p>
-<pre><code class="language-python editable">print(7 * 8)
-</code></pre>
-<p><button onclick="evaluatePython(0)">Suorita</button>
-<br>
-<br>
-<textarea class="output-python" style="width: 100%;" rows="6" disabled></textarea></p>
-<h3 id="tehtävä-korkolaskentaa"><a class="header" href="#tehtävä-korkolaskentaa">Tehtävä: Korkolaskentaa</a></h3>
-<p>Jos alkupääoma on 1200 € ja siihen lisätään 3 % vuosikorko 5 vuoden ajalta,
-saadaan lopulliseksi pääomaksi
-\[1200 \cdot \left(1 + \frac{3}{100}\right)^5.\]
-Suorita alla oleva koodi laskeaksesi lopullisen pääoman likiarvon.  Saatko muokattua koodia laskemaan lopullisen
-pääoman 5 % vuosikorolla?<sup class="footnote-reference"><a href="#vastaus1">1</a></sup>  Kuinka monen vuoden jälkeen lopullinen pääoma on yli 2000 €, jos
-vuosikorko on 5 %?<sup class="footnote-reference"><a href="#vastaus2">2</a></sup></p>
-<pre><code class="language-python editable">print(1200 * (1 + 3 / 100) ** 5)
-</code></pre>
-<p><button onclick="evaluatePython(1)">Suorita</button>
-<br>
-<br>
-<textarea class="output-python" style="width: 100%;" rows="6" disabled></textarea></p>
-<h2 id="muuttujan-määritteleminen"><a class="header" href="#muuttujan-määritteleminen">Muuttujan määritteleminen</a></h2>
-<p>Koodi suoritetaan rivi kerrallaan ellei jokin komento vaikuta järjestykseen.
-Aiempia tuloksia käytetään uudelleen määrittelemällä muuttuja.  Muuttujan nimi
-voi olla esimerkiksi <code>x</code> ja arvo <code>0.3</code>, joka kirjoitetaan muodossa <code>x = 0.3</code>.
-Seuraavilla riveillä <code>x</code> viittaa arvoon <code>0.3</code>.</p>
-<pre><code class="language-python editable">x = 0.3
-print(3 * x)
-</code></pre>
-<p><button onclick="evaluatePython(2)">Suorita</button>
-<br>
-<br>
-<textarea class="output-python" style="width: 100%;" rows="6" disabled></textarea></p>
-<div class="footnote-definition" id="vastaus1"><sup class="footnote-definition-label">1</sup>
-<p>n. 1532 €</p>
-</div>
-<div class="footnote-definition" id="vastaus2"><sup class="footnote-definition-label">2</sup>
-<p>11 vuoden jälkeen</p>
-</div>
+                        <h1 id="lista"><a class="header" href="#lista">Lista</a></h1>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="silmukka.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
                         
                         
                         <div style="clear: both"></div>
@@ -252,6 +162,9 @@ print(3 * x)
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="silmukka.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
                             </nav>
 
