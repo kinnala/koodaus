@@ -48,7 +48,7 @@ print(1200 * (1 + 3 / 100) ** 5)
 Koodi suoritetaan rivi kerrallaan ellei jokin komento vaikuta järjestykseen.
 Aiempia tuloksia käytetään uudelleen määrittelemällä muuttuja.  Muuttujan nimi
 voi olla esimerkiksi `x` ja arvo `0.3`, joka kirjoitetaan muodossa `x = 0.3`.
-Seuraavilla riveillä `x` viittaa arvoon `0.3`.
+Tämän jälkeen `x` viittaa arvoon `0.3`.
 
 ```python,editable
 x = 0.3

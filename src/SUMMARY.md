@@ -1,3 +1,6 @@
 # Summary
 
-- [Python laskimena](./chapter_1.md)
+- [Python laskimena](./laskin.md)
+- [Ehtolause](./ehtolause.md)
+- [Silmukka](./silmukka.md)
+- [Lista](./lista.md)
