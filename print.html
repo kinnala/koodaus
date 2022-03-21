@@ -209,37 +209,78 @@ Vastaus saadaan tekstinä ruudulle komennon <code>print()</code> avulla:</p>
 <br>
 <br>
 <textarea class="output-python" style="width: 100%;" rows="6" disabled></textarea></p>
-<h3 id="tehtävä-korkolaskentaa"><a class="header" href="#tehtävä-korkolaskentaa">Tehtävä: Korkolaskentaa</a></h3>
-<p>Jos alkupääoma on 1200 € ja siihen lisätään 3 % vuosikorko 5 vuoden ajalta,
-saadaan lopulliseksi pääomaksi
-\[1200 \cdot \left(1 + \frac{3}{100}\right)^5.\]
-Suorita alla oleva koodi laskeaksesi lopullisen pääoman likiarvon.  Saatko muokattua koodia laskemaan lopullisen
-pääoman 5 % vuosikorolla?<sup class="footnote-reference"><a href="#vastaus1">1</a></sup>  Kuinka monen vuoden jälkeen lopullinen pääoma on yli 2000 €, jos
-vuosikorko on 5 %?<sup class="footnote-reference"><a href="#vastaus2">2</a></sup></p>
-<pre><code class="language-python editable">print(1200 * (1 + 3 / 100) ** 5)
+<!-- ### Tehtävä: Korkolaskentaa -->
+<!-- Jos alkupääoma on 1200 € ja siihen lisätään 3 % vuosikorko 5 vuoden ajalta, -->
+<!-- saadaan lopulliseksi pääomaksi -->
+<!-- \\[1200 \cdot \left(1 + \frac{3}{100}\right)^5.\\] -->
+<!-- Suorita alla oleva koodi laskeaksesi lopullisen pääoman likiarvon.  Saatko muokattua koodia laskemaan lopullisen -->
+<!-- pääoman 5 % vuosikorolla?[^vastaus1]  Kuinka monen vuoden jälkeen lopullinen pääoma on yli 2000&nbsp;€, jos -->
+<!-- vuosikorko on 5 %?[^vastaus2] -->
+<!-- ```python,editable -->
+<!-- print(1200 * (1 + 3 / 100) ** 5) -->
+<!-- ``` -->
+<!-- <button onclick="evaluatePython(1)">Suorita</button> -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <textarea class="output-python" style="width: 100%;" rows="6" disabled></textarea> -->
+<h2 id="muuttujan-määritteleminen"><a class="header" href="#muuttujan-määritteleminen">Muuttujan määritteleminen</a></h2>
+<p>Koodi suoritetaan rivi kerrallaan ellei jokin komento vaikuta järjestykseen.
+Aiempia tuloksia käytetään uudelleen määrittelemällä <em>muuttuja</em>.  Muuttujan
+nimi voi olla esimerkiksi <code>x</code> ja arvo <code>0.3</code>, joka kirjoitetaan muodossa <code>x = 0.3</code>.  Tämän jälkeen <code>x</code> viittaa arvoon <code>0.3</code>.  Muuttujan nimi voi
+sisältää kirjaimia, numeroita ja alaviivan <code>_</code>.  Muuttujan nimi ei voi
+kuitenkaan alkaa numerolla.</p>
+<pre><code class="language-python editable">x = 0.3
+print(3 * x)
 </code></pre>
 <p><button onclick="evaluatePython(1)">Suorita</button>
 <br>
 <br>
 <textarea class="output-python" style="width: 100%;" rows="6" disabled></textarea></p>
-<h2 id="muuttujan-määritteleminen"><a class="header" href="#muuttujan-määritteleminen">Muuttujan määritteleminen</a></h2>
-<p>Koodi suoritetaan rivi kerrallaan ellei jokin komento vaikuta järjestykseen.
-Aiempia tuloksia käytetään uudelleen määrittelemällä muuttuja.  Muuttujan nimi
-voi olla esimerkiksi <code>x</code> ja arvo <code>0.3</code>, joka kirjoitetaan muodossa <code>x = 0.3</code>.
-Tämän jälkeen <code>x</code> viittaa arvoon <code>0.3</code>.</p>
-<pre><code class="language-python editable">x = 0.3
-print(3 * x)
+<h2 id="arvon-muuttaminen"><a class="header" href="#arvon-muuttaminen">Arvon muuttaminen</a></h2>
+<p>Muuttujan nimen mukaisesti sen arvo voi muuttua.  Mahdollinen käyttötarkoitus
+on esimerkiksi summamuuttuja, jonka arvoon lisätään aiempia tuloksia.
+Muuttujan <code>x</code> nykyiseen arvoon lisätään <code>0.3</code> kirjoittamalla
+<code>x = x + 0.3</code>.
+Tämän voi lyhentää muotoon <code>x += 0.3</code>.
+Erilaisia lyhennemerkintöjä ovat</p>
+<ul>
+<li>lisäys <code>+=</code></li>
+<li>vähennys <code>-=</code></li>
+<li>kertominen <code>*=</code></li>
+<li>jakaminen <code>/=</code></li>
+</ul>
+<pre><code class="language-python editable">x = 1
+print(x)
+x = x + 2
+print(x)
+x += 3
+print(x)
 </code></pre>
 <p><button onclick="evaluatePython(2)">Suorita</button>
 <br>
 <br>
 <textarea class="output-python" style="width: 100%;" rows="6" disabled></textarea></p>
-<div class="footnote-definition" id="vastaus1"><sup class="footnote-definition-label">1</sup>
-<p>n. 1532 €</p>
-</div>
-<div class="footnote-definition" id="vastaus2"><sup class="footnote-definition-label">2</sup>
-<p>11 vuoden jälkeen</p>
-</div>
+<h2 id="muuttujan-tyyppi"><a class="header" href="#muuttujan-tyyppi">Muuttujan tyyppi</a></h2>
+<p>Arvon lisäksi jokaisella muuttujalla on <em>tyyppi</em>.
+Pythonissa on seuraavat
+numeroihin liittyvät tyypit:</p>
+<ul>
+<li><code>int</code> eli kokonaisluku, esim. <code>3</code></li>
+<li><code>float</code> eli liukuluku, esim. <code>3.0</code></li>
+<li><code>complex</code> eli kompleksiluku, esim. <code>3j</code></li>
+</ul>
+<p>Muuttujan tyypin saa selville komennolla <code>type()</code>.
+Pythonissa eri tyyppisillä muuttujilla voi laskea varsin
+vapaasti ja muunnokset tyyppien välillä tapahtuu automaattisesti.</p>
+<pre><code class="language-python editable">x = 3.0
+y = 3
+print(type(x + y))
+</code></pre>
+<p><button onclick="evaluatePython(3)">Suorita</button>
+<br>
+<br>
+<textarea class="output-python" style="width: 100%;" rows="6" disabled></textarea></p>
+<h2 id="tehtävä-koodin-tulkinta"><a class="header" href="#tehtävä-koodin-tulkinta">Tehtävä: Koodin tulkinta</a></h2>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ehtolause"><a class="header" href="#ehtolause">Ehtolause</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="silmukka"><a class="header" href="#silmukka">Silmukka</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="lista"><a class="header" href="#lista">Lista</a></h1>
