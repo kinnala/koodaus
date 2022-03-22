@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Ehtolause - Koodauksen perusteet</title>
+        <title>Ehtolauseet ja silmukat - Koodauksen perusteet</title>
                 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="laskin.html"><strong aria-hidden="true">1.</strong> Python laskimena</a></li><li class="chapter-item expanded "><a href="ehtolause.html" class="active"><strong aria-hidden="true">2.</strong> Ehtolause</a></li><li class="chapter-item expanded "><a href="silmukka.html"><strong aria-hidden="true">3.</strong> Silmukka</a></li><li class="chapter-item expanded "><a href="lista.html"><strong aria-hidden="true">4.</strong> Lista</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="laskin.html"><strong aria-hidden="true">1.</strong> Python laskimena</a></li><li class="chapter-item expanded "><a href="ehtolause.html" class="active"><strong aria-hidden="true">2.</strong> Ehtolauseet ja silmukat</a></li><li class="chapter-item expanded "><a href="lista.html"><strong aria-hidden="true">3.</strong> Listat ja merkkijonot</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -145,7 +145,117 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="ehtolause"><a class="header" href="#ehtolause">Ehtolause</a></h1>
+                        <script src="https://cdn.jsdelivr.net/pyodide/v0.18.1/full/pyodide.js"></script>
+<script>
+function setup(pyodide) {
+  var setup_code = `
+import sys, io, traceback
+def run_code(code):
+    out = io.StringIO()
+    oldout = sys.stdout
+    olderr = sys.stderr
+    sys.stdout = sys.stderr = out
+    try:
+        exec(code, {})
+    except:
+        traceback.print_exc()
+    
+    sys.stdout = oldout
+    sys.stderr = olderr
+    return out.getvalue()
+`
+  pyodide.runPython(setup_code)
+}
+
+async function main() {
+  let pyodide = await loadPyodide({
+    indexURL: "https://cdn.jsdelivr.net/pyodide/v0.18.1/full/",
+  });
+  setup(pyodide);
+  return pyodide;
+}
+let pyodideReadyPromise = main();
+
+async function evaluatePython(i) {
+  let pyodide = await pyodideReadyPromise;
+  try {
+    let editor = document.getElementsByClassName("ace_editor")[i].env.editor;
+    pyodide.globals.code_to_run = editor.getValue();
+    let output = pyodide.runPython('run_code(code_to_run)');
+    document.getElementsByClassName("output-python")[i].value = output;
+  } catch (err) {
+    document.getElementsByClassName("output-python")[i].value = err;
+  }
+}
+</script>
+<h1 id="ehtolauseet-ja-silmukat"><a class="header" href="#ehtolauseet-ja-silmukat">Ehtolauseet ja silmukat</a></h1>
+<h2 id="rivien-suoritusjärjestys"><a class="header" href="#rivien-suoritusjärjestys">Rivien suoritusjärjestys</a></h2>
+<p>Kuten jo aiemmin mainittiin, koodin rivit suoritetaan
+järjestyksessä ellei jokin ohjelmointikielen rakenne muuta
+järjestystä.  Tälläisiä rakenteita ovat</p>
+<ul>
+<li>ehtolauseet <code>if</code>, <code>elif</code> ja <code>else</code></li>
+<li>silmukat <code>while</code> ja <code>for</code></li>
+</ul>
+<p>Nämä rakenteet mahdollistavat suuren osan tietokoneen
+mielenkiintoisista käyttötarkoituksista, esim.
+silmukoiden avulla voidaan toistaa samoja rivejä
+tuhansia kertoja ja ehtolauseiden avulla voidaan
+suorittaa muuttujan arvosta riippuen eri rivit.</p>
+<h2 id="totuusarvo-ja-vertailu"><a class="header" href="#totuusarvo-ja-vertailu">Totuusarvo ja vertailu</a></h2>
+<p>Ehtolauseiden ja silmukoiden kanssa käytetään totuusarvomuuttujia,
+joiden tyyppi on <code>bool</code>.
+Tällaisen muuttujan arvo voi olla joko <code>True</code> (tosi) tai <code>False</code> (epätosi).
+Esimerkiksi ehtolauseessa arvon ollessa <code>True</code> suoritetaan eri
+rivit kuin arvon ollessa <code>False</code>.
+Totuusarvoja määritellään usein vertailujen avulla.</p>
+<p>Tässä on muutamia usein käytettyjä vertailuja:</p>
+<ul>
+<li><code>==</code> eli <em>yhtä suuri kuin</em></li>
+<li><code>!=</code> eli <em>eri suuri kuin</em></li>
+<li><code>&lt;</code> eli <em>pienempi kuin</em></li>
+<li><code>&gt;</code> eli <em>suurempi kuin</em></li>
+<li><code>&lt;=</code> eli <em>pienempi tai yhtä suuri kuin</em></li>
+<li><code>&gt;=</code> eli <em>suurempi tai yhtä suuri kuin</em></li>
+</ul>
+<pre><code class="language-python editable">x = 14
+y = 12
+z = x &lt; y
+print(z)
+</code></pre>
+<p><button onclick="evaluatePython(0)">Suorita</button>
+<br>
+<br>
+<textarea class="output-python" style="width: 100%;" rows="6"></textarea></p>
+<ol>
+<li>Kokeile erilaisia vertailuja ja muuttujien <code>x</code> ja <code>y</code> arvoja.</li>
+<li>Mikä on muuttujan <code>z</code> tyyppi? Kokeile <code>type()</code> funktiota.</li>
+</ol>
+<h2 id="ehtolause"><a class="header" href="#ehtolause">Ehtolause</a></h2>
+<h2 id="silmukka"><a class="header" href="#silmukka">Silmukka</a></h2>
+<h2 id="totuusarvojen-yhdistely"><a class="header" href="#totuusarvojen-yhdistely">Totuusarvojen yhdistely</a></h2>
+<h2 id="esimerkki"><a class="header" href="#esimerkki">Esimerkki</a></h2>
+<p>Oheinen koodi suorittaa seuraavia operaatioita uudestaan
+ja uudestaan kunnes lopputulos on yksi:</p>
+<ul>
+<li>Jos luku on parillinen, jaetaan se kahdella</li>
+<li>Jos luku on pariton, kerrotaan se kolmella ja lisätään yksi</li>
+</ul>
+<p>Voit kokeilla suorittaa koodia eri alkuarvolla <code>x</code>, mutta pohditaan seuraavaksi
+vaihe vaiheelta miten se toimii.</p>
+<pre><code class="language-python editable">x = 14
+while x != 1:
+    print(x)
+    if x % 2 == 0:
+        x = x // 2
+    else:
+        x = 3 * x + 1
+print(x)
+</code></pre>
+<p><button onclick="evaluatePython(1)">Suorita</button>
+<br>
+<br>
+<textarea class="output-python" style="width: 100%;" rows="6"></textarea></p>
 
                     </main>
 
@@ -155,7 +265,7 @@
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="silmukka.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="lista.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -169,7 +279,7 @@
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="silmukka.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="lista.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>

@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="laskin.html" class="active"><strong aria-hidden="true">1.</strong> Python laskimena</a></li><li class="chapter-item expanded "><a href="ehtolause.html"><strong aria-hidden="true">2.</strong> Ehtolause</a></li><li class="chapter-item expanded "><a href="silmukka.html"><strong aria-hidden="true">3.</strong> Silmukka</a></li><li class="chapter-item expanded "><a href="lista.html"><strong aria-hidden="true">4.</strong> Lista</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="laskin.html" class="active"><strong aria-hidden="true">1.</strong> Python laskimena</a></li><li class="chapter-item expanded "><a href="ehtolause.html"><strong aria-hidden="true">2.</strong> Ehtolauseet ja silmukat</a></li><li class="chapter-item expanded "><a href="lista.html"><strong aria-hidden="true">3.</strong> Listat ja merkkijonot</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -199,15 +199,16 @@ Hyödyllisiä peruslaskutoimituksia ovat</p>
 <li>jakolasku <code>/</code></li>
 <li>potenssi <code>**</code></li>
 <li>jakojäännös <code>%</code></li>
+<li>jakolaskun kokonaislukuosa <code>//</code></li>
 </ul>
 <p>Laskujärjestys on tuttu matematiikasta ja sitä voi muuttaa sulkeilla.
-Vastaus saadaan tekstinä ruudulle komennon <code>print()</code> avulla:</p>
-<pre><code class="language-python editable">print(7 * 8)
+Vastaus saadaan tekstinä ruudulle funktion <code>print()</code> avulla:</p>
+<pre><code class="language-python editable">print(7 * (3 - 1))
 </code></pre>
 <p><button onclick="evaluatePython(0)">Suorita</button>
 <br>
 <br>
-<textarea class="output-python" style="width: 100%;" rows="6" disabled></textarea></p>
+<textarea class="output-python" style="width: 100%;" rows="6"></textarea></p>
 <!-- ### Tehtävä: Korkolaskentaa -->
 <!-- Jos alkupääoma on 1200 € ja siihen lisätään 3 % vuosikorko 5 vuoden ajalta, -->
 <!-- saadaan lopulliseksi pääomaksi -->
@@ -223,24 +224,27 @@ Vastaus saadaan tekstinä ruudulle komennon <code>print()</code> avulla:</p>
 <!-- <br> -->
 <!-- <textarea class="output-python" style="width: 100%;" rows="6" disabled></textarea> -->
 <h2 id="muuttujan-määritteleminen"><a class="header" href="#muuttujan-määritteleminen">Muuttujan määritteleminen</a></h2>
-<p>Koodi suoritetaan rivi kerrallaan ellei jokin komento vaikuta järjestykseen.
-Aiempia tuloksia käytetään uudelleen määrittelemällä <em>muuttuja</em>.  Muuttujan
-nimi voi olla esimerkiksi <code>x</code> ja arvo <code>0.3</code>, joka kirjoitetaan muodossa <code>x = 0.3</code>.  Tämän jälkeen <code>x</code> viittaa arvoon <code>0.3</code>.  Muuttujan nimi voi
-sisältää kirjaimia, numeroita ja alaviivan <code>_</code>.  Muuttujan nimi ei voi
-kuitenkaan alkaa numerolla.</p>
-<pre><code class="language-python editable">x = 0.3
-print(3 * x)
+<p>Koodi suoritetaan rivi kerrallaan ellei jokin ohjelmointikielen rakenne vaikuta
+järjestykseen.  Aiempia tuloksia käytetään uudelleen määrittelemällä
+<em>muuttuja</em>.  Muuttujan nimi voi olla esimerkiksi <code>x</code> ja arvo <code>3</code>, joka
+kirjoitetaan muodossa <code>x = 3</code>.  Tämän jälkeen <code>x</code> viittaa arvoon <code>3</code>.
+Muuttujan nimi voi sisältää kirjaimia, numeroita ja alaviivan <code>_</code>.  Muuttujan
+nimi ei voi kuitenkaan alkaa numerolla.</p>
+<pre><code class="language-python editable">x = 3
+muuttuja = 3 * x
+toinen_muuttuja = muuttuja * muuttuja
+print(toinen_muuttuja)
 </code></pre>
 <p><button onclick="evaluatePython(1)">Suorita</button>
 <br>
 <br>
-<textarea class="output-python" style="width: 100%;" rows="6" disabled></textarea></p>
+<textarea class="output-python" style="width: 100%;" rows="6"></textarea></p>
 <h2 id="arvon-muuttaminen"><a class="header" href="#arvon-muuttaminen">Arvon muuttaminen</a></h2>
-<p>Muuttujan nimen mukaisesti sen arvo voi muuttua.  Mahdollinen käyttötarkoitus
+<p>Nimensä mukaisesti muuttujan arvo voi muuttua.  Mahdollinen käyttötarkoitus
 on esimerkiksi summamuuttuja, jonka arvoon lisätään aiempia tuloksia.
-Muuttujan <code>x</code> nykyiseen arvoon lisätään <code>0.3</code> kirjoittamalla
-<code>x = x + 0.3</code>.
-Tämän voi lyhentää muotoon <code>x += 0.3</code>.
+Muuttujan <code>x</code> nykyiseen arvoon lisätään <code>3</code> kirjoittamalla
+<code>x = x + 3</code>.
+Tämän voi lyhentää muotoon <code>x += 3</code>.
 Erilaisia lyhennemerkintöjä ovat</p>
 <ul>
 <li>lisäys <code>+=</code></li>
@@ -248,37 +252,58 @@ Erilaisia lyhennemerkintöjä ovat</p>
 <li>kertominen <code>*=</code></li>
 <li>jakaminen <code>/=</code></li>
 </ul>
-<pre><code class="language-python editable">x = 1
+<p>Muuttujalle voi määritellä myös kokonaan uuden arvon.</p>
+<pre><code class="language-python editable">x = 0
 print(x)
-x = x + 2
+x = x + 3
 print(x)
 x += 3
+print(x)
+x = 0
 print(x)
 </code></pre>
 <p><button onclick="evaluatePython(2)">Suorita</button>
 <br>
 <br>
-<textarea class="output-python" style="width: 100%;" rows="6" disabled></textarea></p>
+<textarea class="output-python" style="width: 100%;" rows="6"></textarea></p>
 <h2 id="muuttujan-tyyppi"><a class="header" href="#muuttujan-tyyppi">Muuttujan tyyppi</a></h2>
 <p>Arvon lisäksi jokaisella muuttujalla on <em>tyyppi</em>.
-Pythonissa on seuraavat
+Python sisältää seuraavat
 numeroihin liittyvät tyypit:</p>
 <ul>
 <li><code>int</code> eli kokonaisluku, esim. <code>3</code></li>
-<li><code>float</code> eli liukuluku, esim. <code>3.0</code></li>
+<li><code>float</code> eli liukuluku, esim. <code>3.0</code> (desimaalierotin on piste)</li>
 <li><code>complex</code> eli kompleksiluku, esim. <code>3j</code></li>
 </ul>
-<p>Muuttujan tyypin saa selville komennolla <code>type()</code>.
-Pythonissa eri tyyppisillä muuttujilla voi laskea varsin
-vapaasti ja muunnokset tyyppien välillä tapahtuu automaattisesti.</p>
-<pre><code class="language-python editable">x = 3.0
-y = 3
-print(type(x + y))
+<p>Muuttujan tyypin saa selville funktiolla <code>type()</code>.
+Eri numerotyypeillä voi laskea varsin
+vapaasti ja muunnokset tapahtuvat usein automaattisesti.
+Esimerkiksi kahden kokonaisluvun jakolaskun tulos
+on automaattisesti liukuluku.
+Muita myöhemmin opittavia tyyppejä ovat mm. <code>bool</code> eli totuusarvo,
+<code>list</code> eli lista ja <code>str</code> eli merkkijono.
+Uusia tyyppejä voi tehdä myös itse.</p>
+<!-- Muita usein käytettyjä tyyppejä ovat -->
+<!-- - `bool` eli totuusarvo, joko `True` tai `False` -->
+<!-- - `tuple` eli monikko, esim. pari `(0, 1)` -->
+<!-- - `list` eli lista, esim. `[0, 1, 2, 3]` -->
+<!-- - `range` eli lukujono, esim. `range(4)` vastaa monissa yhteyksissä listaa `[0, 1, 2, 3]` -->
+<!-- - `str` eli merkkijono, esim. `"kolme"` -->
+<!-- - `dict` eli hakemisto, esim. `{1: 3, 2: 2}` -->
+<!-- - `NoneType` eli puuttuvan arvon `None` tyyppi -->
+<!-- Yllä mainituista tyypeistä puhutaan myöhemmin lisää. -->
+<pre><code class="language-python editable">x = 5
+y = 2
+z = x / y
+print(type(x))
+print(type(y))
+print(type(z))
+print(z)
 </code></pre>
 <p><button onclick="evaluatePython(3)">Suorita</button>
 <br>
 <br>
-<textarea class="output-python" style="width: 100%;" rows="6" disabled></textarea></p>
+<textarea class="output-python" style="width: 100%;" rows="6"></textarea></p>
 <h2 id="tehtävä-koodin-tulkinta"><a class="header" href="#tehtävä-koodin-tulkinta">Tehtävä: Koodin tulkinta</a></h2>
 
                     </main>
