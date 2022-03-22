@@ -1,6 +1,5 @@
 # Summary
 
 - [Python laskimena](./laskin.md)
-- [Ehtolause](./ehtolause.md)
-- [Silmukka](./silmukka.md)
-- [Lista](./lista.md)
+- [Ehtolauseet ja silmukat](./ehtolause.md)
+- [Listat ja merkkijonot](./lista.md)
