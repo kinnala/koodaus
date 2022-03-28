@@ -6,7 +6,7 @@
 
 Kuten jo aiemmin mainittiin, koodin rivit suoritetaan
 järjestyksessä ellei jokin ohjelmointikielen rakenne muuta
-järjestystä.  Tälläisiä rakenteita ovat
+järjestystä.  Tälläisiä rakenteita ovat mm.
 
 - ehtolauseet `if`, `elif` ja `else`
 - silmukat `while` ja `for`
@@ -14,7 +14,7 @@ järjestystä.  Tälläisiä rakenteita ovat
 Nämä rakenteet mahdollistavat suuren osan tietokoneen
 mielenkiintoisista käyttötarkoituksista, esim.
 silmukoiden avulla voidaan toistaa samoja rivejä
-tuhansia kertoja ja ehtolauseiden avulla voidaan
+tuhansia kertoja tai ehtolauseiden avulla voidaan
 suorittaa muuttujan arvosta riippuen eri rivit.
 
 ## Totuusarvo ja vertailu
