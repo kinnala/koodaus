@@ -205,10 +205,10 @@ suorittaa muuttujan arvosta riippuen eri rivit.</p>
 <h2 id="totuusarvo-ja-vertailu"><a class="header" href="#totuusarvo-ja-vertailu">Totuusarvo ja vertailu</a></h2>
 <p>Ehtolauseiden ja silmukoiden kanssa käytetään totuusarvomuuttujia,
 joiden tyyppi on <code>bool</code>.
-Tällaisen muuttujan arvo voi olla joko <code>True</code> (tosi) tai <code>False</code> (epätosi).
-Esimerkiksi ehtolauseessa arvon ollessa <code>True</code> suoritetaan eri
-rivit kuin arvon ollessa <code>False</code>.
-Totuusarvoja määritellään usein vertailujen avulla.</p>
+Totuusarvo on joko <code>True</code> (tosi) tai <code>False</code> (epätosi).
+Esimerkiksi ehtolauseessa arvolla <code>True</code> suoritetaan eri
+rivit kuin arvolla <code>False</code>.
+Totuusarvoja määritetään usein vertailujen avulla.</p>
 <p>Tässä on muutamia usein käytettyjä vertailuja:</p>
 <ul>
 <li><code>==</code> eli <em>yhtä suuri kuin</em></li>
@@ -227,35 +227,61 @@ print(z)
 <br>
 <br>
 <textarea class="output-python" style="width: 100%;" rows="6"></textarea></p>
+<h3 id="harjoituksia"><a class="header" href="#harjoituksia">Harjoituksia</a></h3>
 <ol>
-<li>Kokeile erilaisia vertailuja ja muuttujien <code>x</code> ja <code>y</code> arvoja.</li>
-<li>Mikä on muuttujan <code>z</code> tyyppi? Kokeile <code>type()</code> funktiota.</li>
+<li>Kokeile erilaisia vertailuja muuttujan <code>z</code> määrittelyssä.</li>
+<li>Kokeile tulostaa muuttujan <code>z</code> tyyppi <code>type()</code> funktion avulla.</li>
 </ol>
 <h2 id="ehtolause"><a class="header" href="#ehtolause">Ehtolause</a></h2>
-<h2 id="silmukka"><a class="header" href="#silmukka">Silmukka</a></h2>
-<h2 id="totuusarvojen-yhdistely"><a class="header" href="#totuusarvojen-yhdistely">Totuusarvojen yhdistely</a></h2>
-<h2 id="esimerkki"><a class="header" href="#esimerkki">Esimerkki</a></h2>
-<p>Oheinen koodi suorittaa seuraavia operaatioita uudestaan
-ja uudestaan kunnes lopputulos on yksi:</p>
-<ul>
-<li>Jos luku on parillinen, jaetaan se kahdella</li>
-<li>Jos luku on pariton, kerrotaan se kolmella ja lisätään yksi</li>
-</ul>
-<p>Voit kokeilla suorittaa koodia eri alkuarvolla <code>x</code>, mutta pohditaan seuraavaksi
-vaihe vaiheelta miten se toimii.</p>
-<pre><code class="language-python editable">x = 14
-while x != 1:
-    print(x)
-    if x % 2 == 0:
-        x = x // 2
-    else:
-        x = 3 * x + 1
-print(x)
+<p>Ehtolauseessa totuusarvon perusteella suoritetaan eri rivit.
+Oheisessa esimerkissä tulostetaan eri teksti totuusarvomuuttujan
+<code>enemman_koiria</code> arvosta riippuen.
+Huomaa, että ehtolauseessa suoritettavat rivit pitää <em>sisentää</em>,
+eli rivien alkuun laitetaan aina sama määrä välilyöntejä.
+Python on tarkka siitä, että kaikilla sisennettävillä riveillä
+on sama määrä välilyöntejä.</p>
+<pre><code class="language-python editable">koiria = 1
+kissoja = 2
+enemman_koiria = koiria &gt; kissoja
+if enemman_koiria:
+  print(&quot;Koiria on enemmän kuin kissoja.&quot;)
+else:
+  print(&quot;Kissoja on enemmän (tai yhtä paljon) kuin koiria.&quot;)
 </code></pre>
 <p><button onclick="evaluatePython(1)">Suorita</button>
 <br>
 <br>
 <textarea class="output-python" style="width: 100%;" rows="6"></textarea></p>
+<p>Yllä lauseke <code>&quot;Koiria on enemmän kuin kissoja.&quot;</code> on merkkijono.  Merkkijonoista
+opitaan lisää seuraavassa luvussa.</p>
+<h3 id="harjoituksia-1"><a class="header" href="#harjoituksia-1">Harjoituksia</a></h3>
+<ol>
+<li>Kokeile kasvattaa koirien määrää kuvaavan muuttujan <code>koiria</code> arvoa siten,
+että ehtolause suorittaa eri rivit.</li>
+</ol>
+<h2 id="silmukka"><a class="header" href="#silmukka">Silmukka</a></h2>
+<h2 id="totuusarvojen-yhdistely"><a class="header" href="#totuusarvojen-yhdistely">Totuusarvojen yhdistely</a></h2>
+<!-- ## Esimerkki -->
+<!-- Oheinen koodi suorittaa seuraavia operaatioita uudestaan -->
+<!-- ja uudestaan kunnes lopputulos on yksi: -->
+<!-- - Jos luku on parillinen, jaetaan se kahdella -->
+<!-- - Jos luku on pariton, kerrotaan se kolmella ja lisätään yksi -->
+<!-- Voit kokeilla suorittaa koodia eri alkuarvolla `x`, mutta pohditaan seuraavaksi -->
+<!-- vaihe vaiheelta miten se toimii. -->
+<!-- ```python,editable -->
+<!-- x = 14 -->
+<!-- while x != 1: -->
+<!--     print(x) -->
+<!--     if x % 2 == 0: -->
+<!--         x = x // 2 -->
+<!--     else: -->
+<!--         x = 3 * x + 1 -->
+<!-- print(x) -->
+<!-- ``` -->
+<!-- <button onclick="evaluatePython(1)">Suorita</button> -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <textarea class="output-python" style="width: 100%;" rows="6"></textarea> -->
 
                     </main>
 
