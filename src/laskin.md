@@ -16,7 +16,7 @@ Hyödyllisiä peruslaskutoimituksia ovat
 - jakolaskun kokonaislukuosa `//`
 
 Laskujärjestys on tuttu matematiikasta ja sitä voi muuttaa sulkeilla.
-Vastaus saadaan tekstinä ruudulle funktion `print()` avulla:
+Vastaus saadaan tulostettua ruudulle funktion `print()` avulla:
 
 ```python,editable
 print(7 * (3 - 1))
@@ -26,6 +26,12 @@ print(7 * (3 - 1))
 <br>
 <br>
 <textarea class="output-python" style="width: 100%;" rows="6"></textarea>
+
+### Harjoituksia
+
+1. Pythonissa on valmiina tuki isoille kokonaisluvuille toisin kuin monissa
+   muissa ohjelmointikielissä.  Kokeile laskea jokin hyvin iso luku,
+   esim. \\(2^{1000}\\) tai \\( 5^{5^5} \\).
 
 <!-- ### Tehtävä: Korkolaskentaa -->
 
@@ -141,5 +147,3 @@ print(z)
 <br>
 <br>
 <textarea class="output-python" style="width: 100%;" rows="6"></textarea>
-
-## Tehtävä: Koodin tulkinta

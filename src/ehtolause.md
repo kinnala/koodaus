@@ -21,10 +21,10 @@ suorittaa muuttujan arvosta riippuen eri rivit.
 
 Ehtolauseiden ja silmukoiden kanssa käytetään totuusarvomuuttujia,
 joiden tyyppi on `bool`.
-Tällaisen muuttujan arvo voi olla joko `True` (tosi) tai `False` (epätosi).
-Esimerkiksi ehtolauseessa arvon ollessa `True` suoritetaan eri
-rivit kuin arvon ollessa `False`.
-Totuusarvoja määritellään usein vertailujen avulla.
+Totuusarvo on joko `True` (tosi) tai `False` (epätosi).
+Esimerkiksi ehtolauseessa arvolla `True` suoritetaan eri
+rivit kuin arvolla `False`.
+Totuusarvoja määritetään usein vertailujen avulla.
 
 Tässä on muutamia usein käytettyjä vertailuja:
 
@@ -47,37 +47,68 @@ print(z)
 <br>
 <textarea class="output-python" style="width: 100%;" rows="6"></textarea>
 
-1. Kokeile erilaisia vertailuja ja muuttujien `x` ja `y` arvoja.
-2. Mikä on muuttujan `z` tyyppi? Kokeile `type()` funktiota.
+### Harjoituksia
+
+1. Kokeile erilaisia vertailuja muuttujan `z` määrittelyssä.
+2. Kokeile tulostaa muuttujan `z` tyyppi `type()` funktion avulla.
 
 ## Ehtolause
+
+Ehtolauseessa totuusarvon perusteella suoritetaan eri rivit.
+Oheisessa esimerkissä tulostetaan eri teksti totuusarvomuuttujan
+`enemman_koiria` arvosta riippuen.
+Huomaa, että ehtolauseessa suoritettavat rivit pitää *sisentää*,
+eli rivien alkuun laitetaan aina sama määrä välilyöntejä.
+Python on tarkka siitä, että kaikilla sisennettävillä riveillä
+on sama määrä välilyöntejä.
+```python,editable
+koiria = 1
+kissoja = 2
+enemman_koiria = koiria > kissoja
+if enemman_koiria:
+  print("Koiria on enemmän kuin kissoja.")
+else:
+  print("Kissoja on enemmän (tai yhtä paljon) kuin koiria.")
+```
+<button onclick="evaluatePython(1)">Suorita</button>
+<br>
+<br>
+<textarea class="output-python" style="width: 100%;" rows="6"></textarea>
+
+Yllä lauseke `"Koiria on enemmän kuin kissoja."` on merkkijono.  Merkkijonoista
+opitaan lisää seuraavassa luvussa.
+
+### Harjoituksia
+
+1. Kokeile kasvattaa koirien määrää kuvaavan muuttujan `koiria` arvoa siten,
+   että ehtolause suorittaa eri rivit.
 
 ## Silmukka
 
 ## Totuusarvojen yhdistely
 
-## Esimerkki
+<!-- ## Esimerkki -->
 
-Oheinen koodi suorittaa seuraavia operaatioita uudestaan
-ja uudestaan kunnes lopputulos on yksi:
+<!-- Oheinen koodi suorittaa seuraavia operaatioita uudestaan -->
+<!-- ja uudestaan kunnes lopputulos on yksi: -->
 
-- Jos luku on parillinen, jaetaan se kahdella
-- Jos luku on pariton, kerrotaan se kolmella ja lisätään yksi
+<!-- - Jos luku on parillinen, jaetaan se kahdella -->
+<!-- - Jos luku on pariton, kerrotaan se kolmella ja lisätään yksi -->
 
-Voit kokeilla suorittaa koodia eri alkuarvolla `x`, mutta pohditaan seuraavaksi
-vaihe vaiheelta miten se toimii.
-```python,editable
-x = 14
-while x != 1:
-    print(x)
-    if x % 2 == 0:
-        x = x // 2
-    else:
-        x = 3 * x + 1
-print(x)
-```
+<!-- Voit kokeilla suorittaa koodia eri alkuarvolla `x`, mutta pohditaan seuraavaksi -->
+<!-- vaihe vaiheelta miten se toimii. -->
+<!-- ```python,editable -->
+<!-- x = 14 -->
+<!-- while x != 1: -->
+<!--     print(x) -->
+<!--     if x % 2 == 0: -->
+<!--         x = x // 2 -->
+<!--     else: -->
+<!--         x = 3 * x + 1 -->
+<!-- print(x) -->
+<!-- ``` -->
 
-<button onclick="evaluatePython(1)">Suorita</button>
-<br>
-<br>
-<textarea class="output-python" style="width: 100%;" rows="6"></textarea>
+<!-- <button onclick="evaluatePython(1)">Suorita</button> -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- <textarea class="output-python" style="width: 100%;" rows="6"></textarea> -->
